@@ -10,8 +10,11 @@ Download Jar
 
 Configuration：
 --------------
-- sink.fileName	        default:''	file name
-- sink.appendToolDir	default:''	the path which the append tool will be saved to
+
+| Property Name       | Default | Description                                     |
+| --------------------|:-------:| -----------------------------------------------:|
+| sink.fileName       |    -    | file name                                       |
+| sink.appendToolDir  |    -    | the path which the append tool will be saved to |
 
 Configuration Example：
 ----------------------
