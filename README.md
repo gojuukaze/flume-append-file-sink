@@ -3,6 +3,18 @@ flume-append-file-sink
 
 [中文README.MD](https://github.com/gojuukaze/flume-append-file-sink/blob/master/README.ZH.MD)
 
+Requirements
+------------
+- Flume-NG >= 1.7
+- Linux
+- MacOS
+
+Build
+------------
+```bash
+$ mvn clean package
+```
+
 Download Jar
 ------------
 [flume-append-file-sink-1.0.jar](https://github.com/gojuukaze/flume-append-file-sink/releases)
