@@ -1,6 +1,8 @@
 flume-append-file-sink 
 =========================
 
+追加内容到文件末尾
+
 jar文件下载
 ------------
 [flume-append-file-sink-1.0.jar](https://github.com/gojuukaze/flume-append-file-sink/releases)
