@@ -8,8 +8,12 @@ jar文件下载
 
 配置参数
 --------------
-- sink.fileName	        default:''	文件名
-- sink.appendToolDir	default:''	用来存储此sink所需要的工具的目录，不能删除
+
+| Property Name       | Default | Description                                     |
+| --------------------|:-------:| ------------------------------------------------|
+| **sink.fileName**       |    -    | 文件名                                       |
+| **sink.appendToolDir**  |    -    | 用来存储此sink所需要的工具的目录，不能删除 |
+
 
 配置示例
 ----------------------

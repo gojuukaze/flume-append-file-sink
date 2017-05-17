@@ -12,9 +12,9 @@ Configuration：
 --------------
 
 | Property Name       | Default | Description                                     |
-| --------------------|:-------:| -----------------------------------------------:|
-| sink.fileName       |    -    | file name                                       |
-| sink.appendToolDir  |    -    | the path which the append tool will be saved to |
+| --------------------|:-------:| ------------------------------------------------|
+| **sink.fileName**       |    -    | file name                                       |
+| **sink.appendToolDir**  |    -    | the path which the append tool will be saved to |
 
 Configuration Example：
 ----------------------
