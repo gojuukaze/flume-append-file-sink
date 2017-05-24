@@ -19,6 +19,7 @@ public class AppendFile extends AbstractSink implements Configurable {
     String fileName;
     String appendToolDir;
     String appendTool;
+    int batchSize=100;
 
 
     public void configure(Context context) {
@@ -96,25 +97,32 @@ public class AppendFile extends AbstractSink implements Configurable {
         Event event = null;
         transaction.begin();
         try {
+            int txnEventCount = 0;
+            for (txnEventCount = 0; txnEventCount < batchSize; txnEventCount++) {
+                event = channel.take();
+                if (event == null) {
+                    break;
+                }
 
-            event = channel.take();
-
-            if (event != null) {
                 String s = new String(event.getBody());
                 if (logger.isInfoEnabled()) {
                     logger.info("{Event.body}: " + s);
-                    logger.debug("bash {} {Event.body} >> {}" ,this.appendTool, this.fileName);
+                    logger.info("bash {} {Event.body} >> {}" ,this.appendTool, this.fileName);
                 }
                 Process p = Runtime.getRuntime().exec(new String []{"bash",this.appendTool,s,this.fileName});
                 if (p.waitFor() != 0)
                     throw new Exception(String.format("error when run cmd: bash %s {Event.body} %s", this.appendTool, this.fileName));
+            }
 
+            transaction.commit();
 
-            } else {
+            if (txnEventCount >0) {
+                result= Status.READY;
+            }else {
                 // No event found, request back-off semantics from the sink runner
                 result = Status.BACKOFF;
             }
-            transaction.commit();
+
         } catch (Exception ex) {
             transaction.rollback();
             throw new EventDeliveryException("Failed to log event: " + event, ex);
@@ -125,4 +133,5 @@ public class AppendFile extends AbstractSink implements Configurable {
         return result;
 
     }
+
 }
