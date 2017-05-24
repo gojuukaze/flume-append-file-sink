@@ -19,7 +19,8 @@ public class AppendFile extends AbstractSink implements Configurable {
     String fileName;
     String appendToolDir;
     String appendTool;
-    int batchSize=100;
+    private static final long defaultBatchSize=100;
+    long batchSize;
 
 
     public void configure(Context context) {
@@ -30,7 +31,9 @@ public class AppendFile extends AbstractSink implements Configurable {
         String appendToolDir = context.getString("sink.appendToolDir");
         if (appendToolDir == null || appendToolDir.equals(""))
             throw new ConfigurationException("sink.appendToolDir must be specified");
+        long batchSize = context.getLong("sink.batchSize", defaultBatchSize);
 
+        this.batchSize=batchSize;
         this.fileName = fileName;
         this.appendToolDir = appendToolDir;
 
