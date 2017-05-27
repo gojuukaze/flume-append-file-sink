@@ -98,8 +98,9 @@ public class AppendFile extends AbstractSink implements Configurable {
         Channel channel = getChannel();
         Transaction transaction = channel.getTransaction();
         Event event = null;
-        transaction.begin();
+
         try {
+            transaction.begin();
             int txnEventCount = 0;
             for (txnEventCount = 0; txnEventCount < batchSize; txnEventCount++) {
                 event = channel.take();
