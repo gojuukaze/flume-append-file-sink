@@ -27,6 +27,7 @@ jar文件下载
 | --------------------|:-------:| ------------------------------------------------|
 | **sink.fileName**       |    -    | 文件名                                       |
 | **sink.appendToolDir**  |    -    | 用来存储此sink所需要的工具的目录，不能删除 |
+| **sink.batchSize**      |   100   | 一次提交多少消息   |
 
 
 配置示例
@@ -37,4 +38,14 @@ a1.sinks.k1.sink.fileName = /var/log/m.log
 a1.sinks.k1.sink.appendToolDir = /home/gojuukaze/.append_file_tool
 ```
 
-
+常见问题：
+----------------------
+- 字符显示乱码:  
+  尝试更改系统的字符集,  
+  栗子:  
+  ```bash
+  centos 7: 
+  $ echo 'LANG="zh_CN.UTF-8"' >>/etc/locale.conf
+  
+  ```
+  

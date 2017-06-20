@@ -27,6 +27,7 @@ Configuration：
 | --------------------|:-------:| ------------------------------------------------|
 | **sink.fileName**       |    -    | file name                                       |
 | **sink.appendToolDir**  |    -    | the path which the append tool will be saved to |
+| **sink.batchSize**      |   100   | how many messages to process in one batch   |
 
 Configuration Example：
 ----------------------
@@ -36,4 +37,14 @@ a1.sinks.k1.sink.fileName = /var/log/access.log
 a1.sinks.k1.sink.appendToolDir = /home/gojuukaze/.append_file_tool
 ```
 
-
+FAQ：
+----------------------
+- Your characters are not displayed properly:  
+  Try changing the system locale,  
+  ex:  
+  ```bash
+  centos 7: 
+  $ echo 'LANG="zh_CN.UTF-8"' >>/etc/locale.conf
+  
+  ```
+  
